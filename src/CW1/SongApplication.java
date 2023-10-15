@@ -2,6 +2,7 @@ package CW1;
 // Imports InputReader
 import helpers.InputReader;
 
+
 public class SongApplication{
     public static void main(String[] args) {
         // Creates songlist
@@ -9,9 +10,11 @@ public class SongApplication{
         
         // Default songs of songlist
         Song song1 = new Song("Halo", "Beyonce", 991888598);
+        Song song2 = new Song("", "", 1);
 
         // Populate Songlist with the default songs
         songlist.addSongToSonglist(song1);
+        songlist.addSongToSonglist(song2);
     
         // Menu to output to the user + User menu choice, could be a "do while" loop? could use switch and case statements.
         int menuChoice=0;
@@ -36,9 +39,10 @@ public class SongApplication{
                 case 2:
                     System.out.println("Choice 2");
                     break;
+                // Will output the whole songlist
                 case 3:
                     System.out.println("Choice 3");
-                    songlist.printSonglist(songlist);
+                    songlist.printSonglist();
                     break;
                 case 4:
                     System.out.println("Choice 4");

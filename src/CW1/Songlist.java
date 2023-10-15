@@ -9,9 +9,7 @@ public class Songlist {
    public Songlist() {
     songlist = new ArrayList<Song>();
    }
-   // Populate songlist
    
-
    // Add a new song to the songlist, 
    public void addSongToSonglist(Song song){
     songlist.add(song);
@@ -23,8 +21,18 @@ public class Songlist {
    }
 
    // Print the songlist
-   public void printSonglist(Songlist songlist){
-    System.out.println(songlist);
+    public void printSonglist(){
+        // Line for spacing purposes
+        System.out.println();
+        // For loop that accounts for the size of the current songlist length and runs it that many times
+        for (int i = 0; i < songlist.size(); i++) {
+            // Gets the song data for the current element in the arraylist
+            Song song = songlist.get(i);
+            // Prints out the song name, artist name and playcount for the currently indexed song
+            System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());
+            // Line for spacing purposes, may remove later
+            System.out.println();
+    }
 }
 
    // Print songs that have over a given number of plays 
