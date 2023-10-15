@@ -4,9 +4,14 @@ import helpers.InputReader;
 
 public class SongApplication{
     public static void main(String[] args) {
+        // Creates songlist
+        Songlist songlist = new Songlist();
+        
         // Default songs of songlist
-    
         Song song1 = new Song("Halo", "Beyonce", 991888598);
+
+        // Populate Songlist with the default songs
+        songlist.addSongToSonglist(song1);
     
         // Menu to output to the user + User menu choice, could be a "do while" loop? could use switch and case statements.
         int menuChoice=0;
@@ -33,6 +38,7 @@ public class SongApplication{
                     break;
                 case 3:
                     System.out.println("Choice 3");
+                    songlist.printSonglist(songlist);
                     break;
                 case 4:
                     System.out.println("Choice 4");

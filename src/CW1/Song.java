@@ -17,8 +17,8 @@ public class Song {
         return this.songName;
     }
 
-    public setSongName(string songName){
-
+    public void setSongName(String songName){
+        this.songName = songName;
     }
 
     // Getter and setter for Artist's name
@@ -26,8 +26,8 @@ public class Song {
         return this.artistName;
     }
 
-    public setArtistName(string artistName){
-
+    public void setArtistName(String artistName){
+        this.artistName = artistName;
     }
 
     // Getter and setter for Play count
@@ -35,8 +35,8 @@ public class Song {
         return this.playCount;
     }
 
-    public setPlayCount(int playCount){
-
+    public void setPlayCount(int playCount){
+        this.playCount = playCount;
     }
 
 }
