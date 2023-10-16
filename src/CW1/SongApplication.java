@@ -35,10 +35,12 @@ public class SongApplication{
             switch(menuChoice) {
                 case 1:
                     System.out.println("Choice 1");
-                    songName=InputReader.getString("Song Name: ");
-                    artistName=InputRreader.getString("Artist Name: ");
-                    playCount=InputReader.getString("Playcount: ");
-                    songlist.addSongToSonglist(String songName, String artistName, int playCount);
+                    String songName=InputReader.getString("Song Name: ");
+                    String artistName=InputReader.getString("Artist Name: ");
+                    int playCount=InputReader.getInt("Playcount: ");
+                    Song songToAdd = new Song(songName, artistName, playCount);
+                    songlist.addSongToSonglist(songToAdd);
+                    System.out.println("Song added!");
                     break;
                 case 2:
                     System.out.println("Choice 2");
