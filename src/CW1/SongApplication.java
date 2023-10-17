@@ -16,7 +16,7 @@ public class SongApplication{
         songlist.addSongToSonglist(song1);
         songlist.addSongToSonglist(song2);
     
-        // Menu to output to the user + User menu choice, could be a "do while" loop? could use switch and case statements.
+        // Menu to output to the user + User menu choice
         int menuChoice=0;
         do {
             
@@ -33,6 +33,7 @@ public class SongApplication{
             menuChoice=InputReader.getInt("Please enter your choice: ");
         
             switch(menuChoice) {
+                // Allows the user to add a song to the songlist
                 case 1:
                     System.out.println("Choice 1");
                     String songName=InputReader.getString("Song Name: ");
@@ -50,8 +51,11 @@ public class SongApplication{
                     System.out.println("Choice 3");
                     songlist.printSonglist();
                     break;
+                // Will filter the songlist by a playcount that the user provides
                 case 4:
                     System.out.println("Choice 4");
+                    int playCountFilter=InputReader.getInt("Please enter an amount: ");
+                    songlist.songsOverGivenPlaycount(playCountFilter);
                     break;
                 case 5:
                     System.out.println("Exiting application...");
@@ -59,6 +63,7 @@ public class SongApplication{
                 default:
                     System.out.println("Please select a valid choice (1/2/3/4/5)");
             }
+        // Ensures that the program will repeat until option 5 (or "Quit application") is selected
         } while(menuChoice != 5);
     }
 }

@@ -30,13 +30,19 @@ public class Songlist {
             Song song = songlist.get(i);
             // Prints out the song name, artist name and playcount for the currently indexed song
             System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());
-            // Line for spacing purposes, may remove later
-            System.out.println();
     }
 }
 
    // Print songs that have over a given number of plays 
-    // Potentially an if statement that runs through all the song instances and compares them to the given number
-
-
+    public void songsOverGivenPlaycount(playCountFilter){
+        System.out.println();
+        // For loop that accounts for the size of the current songlist length and runs it that many times
+        for (int i = 0; i < songlist.size(); i++) {
+            // Gets the song data for the current element in the arraylist
+            Song song = songlist.get(i);
+            if (song.getPlayCount() > playCountFilter) {   
+            // Prints out the song name, artist name and playcount if the currently indexed song has over the given number of plays.
+                System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());    
+            }
+        }
 }
