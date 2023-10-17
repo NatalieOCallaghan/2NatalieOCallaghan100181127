@@ -9,13 +9,29 @@ public class SongApplication{
         Songlist songlist = new Songlist();
         
         // Default songs of songlist
-        Song song1 = new Song("Halo", "Beyonce", 991888598);
-        Song song2 = new Song("", "", 1);
+        Song song1 = new Song("Disco Inferno", "The Trammps", 122958376);
+        Song song2 = new Song("Working My Way Back To You", "Frankie Valli & The Four Seasons", 12609313);
+        Song song3 = new Song("Hold the Line", "Toto", 654539932);
+        Song song4 = new Song("It's My Life", "Bon Jovi", 753010952);
+        Song song5 = new Song("I Gotta Feeling", "Black Eyed Peas", 1210979111);
+        Song song6 = new Song("Uptown Funk", "Mark Ronson", 1814204607);
+        Song song7 = new Song("Still into You", "Paramore", 662054821);
+        Song song8 = new Song("Blank Space", "Taylor Swift", 1544159026);
+        Song song9 = new Song("It's Time", "Imagine Dragons", 647013657);
+        Song song10 = new Song("Firework", "Katy Perry", 919050169);
 
         // Populate Songlist with the default songs
         songlist.addSongToSonglist(song1);
         songlist.addSongToSonglist(song2);
-    
+        songlist.addSongToSonglist(song3);
+        songlist.addSongToSonglist(song4);
+        songlist.addSongToSonglist(song5);
+        songlist.addSongToSonglist(song6);
+        songlist.addSongToSonglist(song7);
+        songlist.addSongToSonglist(song8);
+        songlist.addSongToSonglist(song9);
+        songlist.addSongToSonglist(song10);
+
         // Menu to output to the user + User menu choice
         int menuChoice=0;
         do {

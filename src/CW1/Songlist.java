@@ -34,7 +34,7 @@ public class Songlist {
 }
 
    // Print songs that have over a given number of plays 
-    public void songsOverGivenPlaycount(playCountFilter){
+    public void songsOverGivenPlaycount(int playCountFilter){
         System.out.println();
         // For loop that accounts for the size of the current songlist length and runs it that many times
         for (int i = 0; i < songlist.size(); i++) {
@@ -45,4 +45,5 @@ public class Songlist {
                 System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());    
             }
         }
+    }
 }
