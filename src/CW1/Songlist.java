@@ -2,7 +2,7 @@ package CW1;
 import java.util.ArrayList;
 
 public class Songlist {
-
+    Song song;
    // Will be an arraylist of Songs.
    private ArrayList<Song> songlist;
    
@@ -16,9 +16,25 @@ public class Songlist {
    }
 
    // Remove a song from the songlist, 
-    public void removeSongFromSonglist(){
-    
-   }
+    public void removeSongFromSonglist(String songNameToRemove, String artistNameToRemove){
+        // Line for spacing purposes
+        System.out.println();
+        // For loop that accounts for the size of the current songlist length and runs it that many times
+        for (int i = 0; i < songlist.size(); i++) {
+            // Gets the song data for the current element in the arraylist
+            Song song = songlist.get(i);
+            // Takes the values that the user has given and compares them to the values within the currently indexed song instance. If the user-input names are equal with the currently indexed song (ignoring case)
+            if (song.getArtistName().equalsIgnoreCase(artistNameToRemove) && song.getSongName().equalsIgnoreCase(songNameToRemove)) {
+                // If the currently indexed song matches, then it removes the song from the songlist
+                songlist.remove(song);
+                // Prints out a confirmation to the user
+                System.out.println(songNameToRemove + " by " + artistNameToRemove + " removed from the songlist.");
+                return;
+            }
+        }
+        // If the song isn't found in the songlist, it outputs this information to the user
+        System.out.println("Song not found.");
+    }
 
    // Print the songlist
     public void printSonglist(){
@@ -34,7 +50,7 @@ public class Songlist {
 }
 
    // Print songs that have over a given number of plays 
-    public void songsOverGivenPlaycount(int playCountFilter){
+    public void songsOverGivenPlayCount(int playCountFilter){
         System.out.println();
         // For loop that accounts for the size of the current songlist length and runs it that many times
         for (int i = 0; i < songlist.size(); i++) {

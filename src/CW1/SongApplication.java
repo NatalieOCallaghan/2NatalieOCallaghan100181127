@@ -32,10 +32,11 @@ public class SongApplication{
         songlist.addSongToSonglist(song9);
         songlist.addSongToSonglist(song10);
 
-        // Menu to output to the user + User menu choice
+        // Defaults the menu choice to 0, as a value is needed for the "do while" loop to start
         int menuChoice=0;
         do {
             
+            // Menu options
             System.out.println("");
             System.out.println("--- Music Application ---");
             System.out.println("-------- Options --------");
@@ -46,36 +47,55 @@ public class SongApplication{
             System.out.println("5. Quit application");
             System.out.println("");
 
+            // User enters their choice
             menuChoice=InputReader.getInt("Please enter your choice: ");
         
             switch(menuChoice) {
                 // Allows the user to add a song to the songlist
                 case 1:
                     System.out.println("Choice 1");
+                    // User enters information about the song they would like to add
                     String songName=InputReader.getString("Song Name: ");
                     String artistName=InputReader.getString("Artist Name: ");
                     int playCount=InputReader.getInt("Playcount: ");
+                    // Creates a new song instance with the information the user entered
                     Song songToAdd = new Song(songName, artistName, playCount);
+                    // Runs the method "addSongToSonglist" which then adds the song to the songlist
                     songlist.addSongToSonglist(songToAdd);
+                    // Outputs confirmation to the user
                     System.out.println("Song added!");
                     break;
+                
+                // Allows the user to remove a song from the songlist
                 case 2:
                     System.out.println("Choice 2");
+                    // User inputs the song name and artist of the song they would like to remove
+                    String songNameToRemove = InputReader.getString("Song name: ");
+                    String artistNameToRemove = InputReader.getString("Artist name: ");
+                    // These values are put into the removeSongFromSongList method which will remove the song from the songlist
+                    songlist.removeSongFromSonglist(songNameToRemove, artistNameToRemove);
                     break;
+                
                 // Will output the whole songlist
                 case 3:
                     System.out.println("Choice 3");
                     songlist.printSonglist();
                     break;
+
                 // Will filter the songlist by a playcount that the user provides
                 case 4:
                     System.out.println("Choice 4");
+                    // User inputs the amount of playcounts they wish to filter the playlist by
                     int playCountFilter=InputReader.getInt("Please enter an amount: ");
-                    songlist.songsOverGivenPlaycount(playCountFilter);
+                    songlist.songsOverGivenPlayCount(playCountFilter);
                     break;
+    
+                // Informs the user that the program is stopping (the "do while" loop will stop looping)
                 case 5:
                     System.out.println("Exiting application...");
                     break;
+    
+                // Will output this to the user if they input anything that isn't a menu option
                 default:
                     System.out.println("Please select a valid choice (1/2/3/4/5)");
             }
