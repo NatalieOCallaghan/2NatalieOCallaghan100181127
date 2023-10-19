@@ -4,23 +4,22 @@ import helpers.ConsoleColours;
 // Imports InputReader (Used for user inputs)
 import helpers.InputReader;
 
-
 public class SongApplication{
     public static void main(String[] args) {
         // Creates songlist
         Songlist songlist = new Songlist();
         
         // Default songs of songlist
-        Song song1 = new Song("Disco Inferno", "The Trammps", 122958376);
-        Song song2 = new Song("Working My Way Back To You", "Frankie Valli & The Four Seasons", 12609313);
-        Song song3 = new Song("Hold the Line", "Toto", 654539932);
-        Song song4 = new Song("It's My Life", "Bon Jovi", 753010952);
-        Song song5 = new Song("I Gotta Feeling", "Black Eyed Peas", 1210979111);
-        Song song6 = new Song("Uptown Funk", "Mark Ronson", 1814204607);
-        Song song7 = new Song("Still into You", "Paramore", 662054821);
-        Song song8 = new Song("Blank Space", "Taylor Swift", 1544159026);
-        Song song9 = new Song("It's Time", "Imagine Dragons", 647013657);
-        Song song10 = new Song("Firework", "Katy Perry", 919050169);
+        Song song1 = new Song("Disco Inferno", "The Trammps", 122958376,212);
+        Song song2 = new Song("Working My Way Back To You", "Frankie Valli & The Four Seasons", 12609313, 185);
+        Song song3 = new Song("Hold the Line", "Toto", 654539932, 236);
+        Song song4 = new Song("It's My Life", "Bon Jovi", 753010952, 225);
+        Song song5 = new Song("I Gotta Feeling", "Black Eyed Peas", 1210979111, 290);
+        Song song6 = new Song("Uptown Funk", "Mark Ronson", 1814204607, 270);
+        Song song7 = new Song("Still into You", "Paramore", 662054821, 217);
+        Song song8 = new Song("Blank Space", "Taylor Swift", 1544159026, 232);
+        Song song9 = new Song("It's Time", "Imagine Dragons", 647013657, 240);
+        Song song10 = new Song("Firework", "Katy Perry", 919050169, 219);
 
         // Populate Songlist with the default songs
         songlist.addSongToSonglist(song1);
@@ -74,7 +73,8 @@ public class SongApplication{
             System.out.println("3. Print current songlist");
             System.out.println("4. Filter songs that have over an amount of playcounts");
             System.out.println("5. Change theme");
-            System.out.println("6. Quit application");
+            System.out.println("6. Output songlist length");
+            System.out.println("7. Quit application");
             System.out.println("");
 
             // User enters their choice
@@ -88,8 +88,9 @@ public class SongApplication{
                     String songName=InputReader.getString("Song Name: ");
                     String artistName=InputReader.getString("Artist Name: ");
                     int playCount=InputReader.getInt("Playcount: ");
+                    int songLength=InputReader.getInt("Song length: ");
                     // Creates a new song instance with the information the user entered
-                    Song songToAdd = new Song(songName, artistName, playCount);
+                    Song songToAdd = new Song(songName, artistName, playCount, songLength);
                     // Runs the method "addSongToSonglist" which then adds the song to the songlist
                     songlist.addSongToSonglist(songToAdd);
                     // Outputs confirmation to the user
@@ -120,6 +121,7 @@ public class SongApplication{
                     songlist.songsOverGivenPlayCount(playCountFilter);
                     break;
                 
+                // Allows the user to change the program's theme
                 case 5:
                     System.out.println("Choice 5");
                     // Outputs the options to the user and defaults validation to "false"
@@ -140,9 +142,16 @@ public class SongApplication{
                     // Will continue to loop until the theme entered is valid
                     } while (themeValid == false);
                     break;
-
-                // Informs the user that the program is stopping (the "do while" loop will stop looping)
+                
+                // Will output the songlist length
                 case 6:
+                    System.out.println("Choice 6");
+                    int songlistLength = songlist.songlistLength();
+                    System.out.println("Songlist length: " + songlistLength + " seconds");
+                    break;
+                    
+                // Informs the user that the program is stopping (the "do while" loop will stop looping)
+                case 7:
                     System.out.println("Exiting application...");
                     break;
     

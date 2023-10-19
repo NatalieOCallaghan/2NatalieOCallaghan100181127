@@ -1,4 +1,5 @@
 package CW1;
+// Imports arrayList (used for creating the songlist)
 import java.util.ArrayList;
 
 public class Songlist {
@@ -44,10 +45,10 @@ public class Songlist {
         for (int i = 0; i < songlist.size(); i++) {
             // Gets the song data for the current element in the arraylist
             Song song = songlist.get(i);
-            // Prints out the song name, artist name and playcount for the currently indexed song
-            System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());
+            // Prints out the song name, artist name, playcount and length for the currently indexed song
+            System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount() + ", " + song.getSongLength());
+        }
     }
-}
 
    // Print songs that have over a given number of plays 
     public void songsOverGivenPlayCount(int playCountFilter){
@@ -58,8 +59,23 @@ public class Songlist {
             Song song = songlist.get(i);
             if (song.getPlayCount() > playCountFilter) {   
             // Prints out the song name, artist name and playcount if the currently indexed song has over the given number of plays.
-                System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount());    
+                System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount() + song.getSongLength());    
             }
         }
     }
+
+    // Calculates the length of the songlist
+    public int songlistLength(){
+        // Defaults the length of the songlist to 0 
+        int songlistLength = 0;
+        // For loop that accounts for the size of the current songlist length and runs it that many times
+        for (int i = 0; i < songlist.size(); i++) {
+            // Gets the song data for the current element in the arraylist
+            Song song = songlist.get(i);
+            // Adds the length of the currently indexed song to the total length of the songlist
+            songlistLength = songlistLength + song.getSongLength();
+        }
+        return songlistLength;
+    }
 }
+

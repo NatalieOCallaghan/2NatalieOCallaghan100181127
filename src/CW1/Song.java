@@ -4,12 +4,14 @@ public class Song {
     private String songName;
     private String artistName;
     private int playCount;
+    private int songLength;
 
     // Constructor
-    public Song(String songName, String artistName, int playCount) {
+    public Song(String songName, String artistName, int playCount, int songLength) {
         this.songName = songName;
         this.artistName = artistName;
         this.playCount = playCount;
+        this.songLength = songLength;
     }
    
     // Getter and Setter for Song name    
@@ -37,6 +39,15 @@ public class Song {
 
     public void setPlayCount(int playCount){
         this.playCount = playCount;
+    }
+
+    // Getter and setter for song length
+    public int getSongLength(){
+        return this.songLength;
+    }
+
+    public void setSongLength(int songLength){
+        this.songLength = songLength;
     }
 
 }
