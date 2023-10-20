@@ -3,6 +3,8 @@ package CW1;
 import helpers.ConsoleColours;
 // Imports InputReader (Used for user inputs)
 import helpers.InputReader;
+// Imports DecimanFormat (Used for formatting double values to two decimal places)
+import java.text.DecimalFormat;
 
 public class SongApplication{
     public static void main(String[] args) {
@@ -128,15 +130,23 @@ public class SongApplication{
                 
                 // Will output the songlist length
                 case 6:
-                    int songlistLength = songlist.songlistLength();
+                    // gets the songlist length from the method
+                    double songlistLength = songlist.songlistLength();
+                    // Sets up a DecimalFormat to be able to format the songlist length into having two decimal places
+                    DecimalFormat roundingToTwoDP = new DecimalFormat("#.##");
+                    // If the songlist is less than a minute, it simply outputs how long the songlist is in seconds
                     if (songlistLength < 60) {
                         System.out.println("Songlist length: " + songlistLength + " seconds");
-                    } else if (songlistLength > 60 && songlistLength < 3600){
+                    // If the songlist is a minute or longer AND shorter than an hour, it divides the seconds value by 60 to get the minute(s), rounds it to 2 decimal places and outputs this to the user
+                    } else if (songlistLength >= 60 && songlistLength < 3600){
                         songlistLength = songlistLength/60;
-                        System.out.println("Songlist length: " + songlistLength + " minutes");
+                        String lengthRoundedToTwoDP = roundingToTwoDP.format(songlistLength);
+                        System.out.println("Songlist length: " + lengthRoundedToTwoDP + " minutes");
+                    // If the songlist is an hour or longer, it divides the seconds value by 3600 to get the hour(s), rounds it to 2 decimal places and outputs this to the user
                     } else {
                         songlistLength = songlistLength/3600;
-                        System.out.println("Songlist length: " + songlistLength + " hours");
+                        String lengthRoundedToTwoDP = roundingToTwoDP.format(songlistLength);
+                        System.out.println("Songlist length: " + lengthRoundedToTwoDP + " hours");
                     }
                     break;
                     
