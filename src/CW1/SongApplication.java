@@ -9,29 +9,17 @@ public class SongApplication{
         // Creates songlist
         Songlist songlist = new Songlist();
         
-        // Default songs of songlist
-        Song song1 = new Song("Disco Inferno", "The Trammps", 122958376,212);
-        Song song2 = new Song("Working My Way Back To You", "Frankie Valli & The Four Seasons", 12609313, 185);
-        Song song3 = new Song("Hold the Line", "Toto", 654539932, 236);
-        Song song4 = new Song("It's My Life", "Bon Jovi", 753010952, 225);
-        Song song5 = new Song("I Gotta Feeling", "Black Eyed Peas", 1210979111, 290);
-        Song song6 = new Song("Uptown Funk", "Mark Ronson", 1814204607, 270);
-        Song song7 = new Song("Still into You", "Paramore", 662054821, 217);
-        Song song8 = new Song("Blank Space", "Taylor Swift", 1544159026, 232);
-        Song song9 = new Song("It's Time", "Imagine Dragons", 647013657, 240);
-        Song song10 = new Song("Firework", "Katy Perry", 919050169, 219);
-
-        // Populate Songlist with the default songs
-        songlist.addSongToSonglist(song1);
-        songlist.addSongToSonglist(song2);
-        songlist.addSongToSonglist(song3);
-        songlist.addSongToSonglist(song4);
-        songlist.addSongToSonglist(song5);
-        songlist.addSongToSonglist(song6);
-        songlist.addSongToSonglist(song7);
-        songlist.addSongToSonglist(song8);
-        songlist.addSongToSonglist(song9);
-        songlist.addSongToSonglist(song10);
+        // Default songs that populate the songlist
+        songlist.addSongToSonglist(new Song("Disco Inferno", "The Trammps", 122958376,212));
+        songlist.addSongToSonglist(new Song("Working My Way Back To You", "Frankie Valli & The Four Seasons", 12609313, 185));
+        songlist.addSongToSonglist(new Song("Hold the Line", "Toto", 654539932, 236));
+        songlist.addSongToSonglist(new Song("It's My Life", "Bon Jovi", 753010952, 225));
+        songlist.addSongToSonglist(new Song("I Gotta Feeling", "Black Eyed Peas", 1210979111, 290));
+        songlist.addSongToSonglist(new Song("Uptown Funk", "Mark Ronson", 1814204607, 270));
+        songlist.addSongToSonglist(new Song("Still into You", "Paramore", 662054821, 217));
+        songlist.addSongToSonglist(new Song("Blank Space", "Taylor Swift", 1544159026, 232));
+        songlist.addSongToSonglist(new Song("It's Time", "Imagine Dragons", 647013657, 240));
+        songlist.addSongToSonglist(new Song("Firework", "Katy Perry", 919050169, 219));
 
         // Defaults the theme of the application to "none"
         System.out.println(ConsoleColours.ANSI_RESET);
@@ -83,12 +71,11 @@ public class SongApplication{
             switch(menuChoice) {
                 // Allows the user to add a song to the songlist
                 case 1:
-                    System.out.println("Choice 1");
                     // User enters information about the song they would like to add
                     String songName=InputReader.getString("Song Name: ");
                     String artistName=InputReader.getString("Artist Name: ");
                     int playCount=InputReader.getInt("Playcount: ");
-                    int songLength=InputReader.getInt("Song length: ");
+                    int songLength=InputReader.getInt("Song length (in seconds): ");
                     // Creates a new song instance with the information the user entered
                     Song songToAdd = new Song(songName, artistName, playCount, songLength);
                     // Runs the method "addSongToSonglist" which then adds the song to the songlist
@@ -99,7 +86,6 @@ public class SongApplication{
                 
                 // Allows the user to remove a song from the songlist
                 case 2:
-                    System.out.println("Choice 2");
                     // User inputs the song name and artist of the song they would like to remove
                     String songNameToRemove = InputReader.getString("Song name: ");
                     String artistNameToRemove = InputReader.getString("Artist name: ");
@@ -109,13 +95,11 @@ public class SongApplication{
                 
                 // Will output the whole songlist
                 case 3:
-                    System.out.println("Choice 3");
                     songlist.printSonglist();
                     break;
 
                 // Will filter the songlist by a playcount that the user provides
                 case 4:
-                    System.out.println("Choice 4");
                     // User inputs the amount of playcounts they wish to filter the playlist by
                     int playCountFilter=InputReader.getInt("Please enter an amount: ");
                     songlist.songsOverGivenPlayCount(playCountFilter);
@@ -123,7 +107,6 @@ public class SongApplication{
                 
                 // Allows the user to change the program's theme
                 case 5:
-                    System.out.println("Choice 5");
                     // Outputs the options to the user and defaults validation to "false"
                     System.out.println("Themes: Black, White, Red, Green, Yellow, Blue, Purple, Cyan");
                     Boolean themeValid=false;
@@ -145,9 +128,16 @@ public class SongApplication{
                 
                 // Will output the songlist length
                 case 6:
-                    System.out.println("Choice 6");
                     int songlistLength = songlist.songlistLength();
-                    System.out.println("Songlist length: " + songlistLength + " seconds");
+                    if (songlistLength < 60) {
+                        System.out.println("Songlist length: " + songlistLength + " seconds");
+                    } else if (songlistLength > 60 && songlistLength < 3600){
+                        songlistLength = songlistLength/60;
+                        System.out.println("Songlist length: " + songlistLength + " minutes");
+                    } else {
+                        songlistLength = songlistLength/3600;
+                        System.out.println("Songlist length: " + songlistLength + " hours");
+                    }
                     break;
                     
                 // Informs the user that the program is stopping (the "do while" loop will stop looping)
@@ -160,6 +150,6 @@ public class SongApplication{
                     System.out.println("Please select a valid choice (1/2/3/4/5)");
             }
         // Ensures that the program will repeat until option 6 (or "Quit application") is selected
-        } while(menuChoice != 6);
+        } while(menuChoice != 7);
     }
 }
