@@ -157,7 +157,7 @@ public class SongApplication{
     
                 // Will output this to the user if they input anything that isn't a menu option
                 default:
-                    System.out.println("Please select a valid choice (1/2/3/4/5)");
+                    System.out.println("Please select a valid choice (1/2/3/4/5/6/7)");
             }
         // Ensures that the program will repeat until option 6 (or "Quit application") is selected
         } while(menuChoice != 7);
