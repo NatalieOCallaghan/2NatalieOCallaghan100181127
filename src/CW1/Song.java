@@ -1,3 +1,9 @@
+/**
+ * Author: Natalie O'Callaghan
+ * Date: October 21, 2023
+ * Description: This is a class for setting up songs that will go into the songlist. It features a constructor and getters and setters for the song's properties.
+ */
+
 package CW1;
 
 public class Song {

@@ -1,3 +1,9 @@
+/**
+ * Author: Natalie O'Callaghan
+ * Date: October 21, 2023
+ * Description: This is a class for the songlist, holding the constructor and methods for adding a song to the songlist, removing a song from the songlist, printing the songlist, filtering the songlistand calculating the songist length.
+ */
+
 package CW1;
 // Imports arrayList (used for creating the songlist)
 import java.util.ArrayList;
@@ -41,25 +47,31 @@ public class Songlist {
     public void printSonglist(){
         // Line for spacing purposes
         System.out.println();
+        // Setting up the column titles for the table. The values %-(num)(datatype) is for setting up spacing.
+        System.out.println(String.format("%-30s%-35s%-15s%-15s", "Song Name", "Artist Name", "Play Count", "Song Length (s)"));
         // For loop that accounts for the size of the current songlist length and runs it that many times
         for (int i = 0; i < songlist.size(); i++) {
             // Gets the song data for the current element in the arraylist
             Song song = songlist.get(i);
             // Prints out the song name, artist name, playcount and length for the currently indexed song
-            System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount() + ", " + song.getSongLength());
+            // Setting up how the values will be output in the table format. The values %-(num)(datatype) is for setting up spacing.
+            System.out.println(String.format("%-30s%-35s%-15d%-15d", song.getSongName(), song.getArtistName(), song.getPlayCount(), song.getSongLength()));
         }
     }
 
    // Print songs that have over a given number of plays 
     public void songsOverGivenPlayCount(int playCountFilter){
         System.out.println();
+        // Setting up the column titles for the table. The values %-(num)(datatype) is for setting up spacing.
+        System.out.println(String.format("%-30s%-35s%-15s%-15s", "Song Name", "Artist Name", "Play Count", "Song Length (s)"));
         // For loop that accounts for the size of the current songlist length and runs it that many times
         for (int i = 0; i < songlist.size(); i++) {
             // Gets the song data for the current element in the arraylist
             Song song = songlist.get(i);
             if (song.getPlayCount() > playCountFilter) {   
-            // Prints out the song name, artist name and playcount if the currently indexed song has over the given number of plays.
-                System.out.println(song.getSongName() + ", " + song.getArtistName() + ", " + song.getPlayCount() + song.getSongLength());    
+                // Prints out the song name, artist name and playcount if the currently indexed song has over the given number of plays.
+                // Setting up how the values will be output in the table format. The values %-(num)(datatype) is for setting up spacing.
+                System.out.println(String.format("%-30s%-35s%-15d%-15d", song.getSongName(), song.getArtistName(), song.getPlayCount(), song.getSongLength()));
             }
         }
     }

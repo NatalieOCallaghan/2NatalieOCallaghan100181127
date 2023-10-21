@@ -1,3 +1,9 @@
+/**
+ * Author: Natalie O'Callaghan
+ * Date: October 21, 2023
+ * Description: This where the program will be ran. It outputs a menu to the user where they can choose and option and run the corresponding method(s) in order to view and manage the songlist.
+ */
+
 package CW1;
 // Imports ConsoleColours (Used for themes)
 import helpers.ConsoleColours;
