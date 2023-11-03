@@ -1,18 +1,19 @@
 /**
  * Author: Natalie O'Callaghan
- * Date: October 21, 2023
+ * Date: November 03, 2023
  * Description: This is a class for setting up songs that will go into the songlist. It features a constructor and getters and setters for the song's properties.
  */
 
 package CW1;
 
 public class Song {
+    // Sets up the song's properties to their correct datatypes
     private String songName;
     private String artistName;
     private int playCount;
     private int songLength;
 
-    // Constructor
+    // Constructor for the song, setting up how the song will be structured
     public Song(String songName, String artistName, int playCount, int songLength) {
         this.songName = songName;
         this.artistName = artistName;
@@ -38,7 +39,7 @@ public class Song {
         this.artistName = artistName;
     }
 
-    // Getter and setter for Play count
+    // Getter and setter for the PlayCount
     public int getPlayCount(){
         return this.playCount;
     }
@@ -47,7 +48,7 @@ public class Song {
         this.playCount = playCount;
     }
 
-    // Getter and setter for song length
+    // Getter and setter for Song length
     public int getSongLength(){
         return this.songLength;
     }

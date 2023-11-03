@@ -1,7 +1,7 @@
 /**
  * Author: Natalie O'Callaghan
- * Date: October 21, 2023
- * Description: This where the program will be ran. It outputs a menu to the user where they can choose and option and run the corresponding method(s) in order to view and manage the songlist.
+ * Date: November 03, 2023
+ * Description: This is where the program will be ran. It outputs a menu to the user where they can choose an option and run the corresponding method(s) in order to view and manage the songlist.
  */
 
 package CW1;
@@ -9,7 +9,7 @@ package CW1;
 import helpers.ConsoleColours;
 // Imports InputReader (Used for user inputs)
 import helpers.InputReader;
-// Imports DecimanFormat (Used for formatting double values to two decimal places)
+// Imports DecimalFormat (Used for formatting double values to two decimal places)
 import java.text.DecimalFormat;
 
 public class SongApplication{
@@ -32,10 +32,10 @@ public class SongApplication{
         // Defaults the theme of the application to "none"
         System.out.println(ConsoleColours.ANSI_RESET);
         String theme="none";
-        // Defaults the menu choice to 0, as a value is needed for the "do while" loop to start
+        // Defaults the menu choice to 0, as a value is required for the "do while" loop to start
         int menuChoice=0;
         do {
-            // Conditional statements to check and set the theme of the program. It will be none as default but then will change if the user decides to change it
+            // Conditional statements to check and set the theme of the program. It will be "none" as default but then will change if the user decides to change it
             // This is checked with every loop to ensure that what the user is seeing is up to date with the theme they want
             if (theme.equalsIgnoreCase("Black")) {
                 // Makes use of the "ConsoleColours" helper to set the theme to the correct colour
@@ -56,7 +56,7 @@ public class SongApplication{
                 System.out.println(ConsoleColours.ANSI_CYAN);       
             }
             else {
-                // If the theme is none then it outputs the default colour (or performs a "reset" on the theme)
+                // If the theme is "none" then it outputs the default colour (or performs a "reset" on the theme)
                 System.out.println(ConsoleColours.ANSI_RESET);
             }
             
@@ -73,13 +73,13 @@ public class SongApplication{
             System.out.println("7. Quit application");
             System.out.println("");
 
-            // User enters their choice
+            // Allows the user to enter their choice
             menuChoice=InputReader.getInt("Please enter your choice: ");
         
             switch(menuChoice) {
                 // Allows the user to add a song to the songlist
                 case 1:
-                    // User enters information about the song they would like to add
+                    // User enters information about the song they would like to add (Song name, artist name, playcount and songlength)
                     String songName=InputReader.getString("Song Name: ");
                     String artistName=InputReader.getString("Artist Name: ");
                     int playCount=InputReader.getInt("Playcount: ");
@@ -88,20 +88,20 @@ public class SongApplication{
                     Song songToAdd = new Song(songName, artistName, playCount, songLength);
                     // Runs the method "addSongToSonglist" which then adds the song to the songlist
                     songlist.addSongToSonglist(songToAdd);
-                    // Outputs confirmation to the user
+                    // Outputs a confirmation to the user
                     System.out.println("Song added!");
                     break;
                 
                 // Allows the user to remove a song from the songlist
                 case 2:
-                    // User inputs the song name and artist of the song they would like to remove
+                    // User inputs the song's name and artist of the song they would like to remove
                     String songNameToRemove = InputReader.getString("Song name: ");
                     String artistNameToRemove = InputReader.getString("Artist name: ");
                     // These values are put into the removeSongFromSongList method which will remove the song from the songlist
                     songlist.removeSongFromSonglist(songNameToRemove, artistNameToRemove);
                     break;
                 
-                // Will output the whole songlist
+                // Will output the whole songlist by running the printSongList method
                 case 3:
                     songlist.printSonglist();
                     break;
@@ -110,6 +110,7 @@ public class SongApplication{
                 case 4:
                     // User inputs the amount of playcounts they wish to filter the playlist by
                     int playCountFilter=InputReader.getInt("Please enter an amount: ");
+                    // This filter value is then passed into the songOverGivenPlayCount method and ran so it can output relevant songs to the user
                     songlist.songsOverGivenPlayCount(playCountFilter);
                     break;
                 
@@ -125,7 +126,7 @@ public class SongApplication{
                         // If the theme entered equals any of the available themes, the validator, themeValid, becomes true
                         if (theme.equalsIgnoreCase("Black") || theme.equalsIgnoreCase("White") || theme.equalsIgnoreCase("Red") || theme.equalsIgnoreCase("Green") || theme.equalsIgnoreCase("Yellow") || theme.equalsIgnoreCase("Blue") || theme.equalsIgnoreCase("Purple") || theme.equalsIgnoreCase("Cyan")) {
                             themeValid=true;
-                        // If the theme entered doesn't equal any of the available themes, it will output an error message and keep the validator false
+                        // If the theme entered doesn't equal any of the available themes, it will output an error message and ensure that the validator is set to false
                         } else {
                             System.out.println("Theme invalid. Please try again.");
                             themeValid=false;
@@ -136,11 +137,11 @@ public class SongApplication{
                 
                 // Will output the songlist length
                 case 6:
-                    // gets the songlist length from the method
+                    // Gets the songlist length from the method
                     double songlistLength = songlist.songlistLength();
                     // Sets up a DecimalFormat to be able to format the songlist length into having two decimal places
                     DecimalFormat roundingToTwoDP = new DecimalFormat("#.##");
-                    // If the songlist is less than a minute, it simply outputs how long the songlist is in seconds
+                    // If the songlist is less than a minute, it outputs how long the songlist is in seconds
                     if (songlistLength < 60) {
                         System.out.println("Songlist length: " + songlistLength + " seconds");
                     // If the songlist is a minute or longer AND shorter than an hour, it divides the seconds value by 60 to get the minute(s), rounds it to 2 decimal places and outputs this to the user
@@ -165,7 +166,7 @@ public class SongApplication{
                 default:
                     System.out.println("Please select a valid choice (1/2/3/4/5/6/7)");
             }
-        // Ensures that the program will repeat until option 6 (or "Quit application") is selected
+        // Ensures that the program will repeat until option 7 (or "Quit application") is selected
         } while(menuChoice != 7);
     }
 }
