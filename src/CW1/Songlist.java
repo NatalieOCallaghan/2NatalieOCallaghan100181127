@@ -32,7 +32,7 @@ public class Songlist {
             // Retrieves (or gets) the song data for the current element in the arraylist
             Song song = songlist.get(i);
             // Takes the values that the user has given and compares them to the values within the currently indexed song instance
-            // If the user-input names are equal with the currently indexed song (ignoring case) then it continues with the "if" statment
+            // If the user-input names are equal with the currently indexed song (ignoring case) then it continues with the "if" statement
             if (song.getArtistName().equalsIgnoreCase(artistNameToRemove) && song.getSongName().equalsIgnoreCase(songNameToRemove)) {
                 // If the currently indexed song matches, then it removes the song from the songlist
                 songlist.remove(song);

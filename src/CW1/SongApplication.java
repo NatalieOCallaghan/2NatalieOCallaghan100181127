@@ -1,7 +1,7 @@
 /**
  * Author: Natalie O'Callaghan
  * Date: November 03, 2023
- * Description: This is where the program will be ran. It outputs a menu to the user where they can choose an option and run the corresponding method(s) in order to view and manage the songlist.
+ * Description: This is where the program will be run. It outputs a menu to the user where they can choose an option and run the corresponding method(s) in order to view and manage the songlist.
  */
 
 package CW1;
